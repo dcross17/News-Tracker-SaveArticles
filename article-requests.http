@@ -1,0 +1,24 @@
+
+
+### Request 1: Create an article
+### Response
+### Status Code: 201
+### Body: JSON object for the newly created exercise. Must be an object, not an array
+POST http://localhost:3001/articles HTTP/1.1
+content-type: application/json
+
+{
+    "source": {
+        "id": null,
+        "name": "Theregister.com"
+    },
+    "author": "Iain Thomson",
+    "title": "NASA's X-59 plane is aiming for a sonic thump, not a boom - The Register",
+    "description": "Pilot James 'Clue' Less is ready to take to the skies",
+    "url": "https://www.theregister.com/2024/11/30/nasa_x59_aircraft/",
+    "urlToImage": "https://regmedia.co.uk/2024/01/12/nasa_lockheed_martin_x59.jpg",
+    "publishedAt": "2024-11-30T15:35:00Z",
+    "content": "Feature Sitting in the hangar of Lockheed Martin's famous Palmdale, California Skunk Works facility is one of the oddest aircraft ever to take shape: the X-59 that's looking to revive supersonic trav… [+5607 chars]"
+}
+
+

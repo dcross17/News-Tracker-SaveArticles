@@ -20,8 +20,18 @@ function isDateValid(date) {
 // Add routes for handling articles
 
 // Create a new article
-router.post("/articles", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
+    // check if article isn't already in the database
+    const articleExists = await articlesModel.findArticleByUrl(req.body.url);
+
+    if (articleExists.length > 0) {
+      res
+        .status(200)
+        .json({ message: "Article already exists, no further action needed" });
+      return;
+    }
+
     const article = await articlesModel.createArticle(req.body);
     res.status(201).json(article);
   } catch (error) {
@@ -30,7 +40,7 @@ router.post("/articles", async (req, res) => {
 });
 
 // Retrieve all articles
-router.get("/articles", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const articles = await articlesModel.findArticles(req.query);
     res.status(200).json(articles);
@@ -40,7 +50,7 @@ router.get("/articles", async (req, res) => {
 });
 
 // Retrieve an article by ID
-router.get("/articles/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     const article = await articlesModel.findArticleById(req.params.id);
     if (article) {
@@ -54,7 +64,7 @@ router.get("/articles/:id", async (req, res) => {
 });
 
 // Update an article
-router.put("/articles/:id", async (req, res) => {
+router.put("/:id", async (req, res) => {
   try {
     const update = await articlesModel.updateArticles(
       { _id: req.params.id },
@@ -71,7 +81,7 @@ router.put("/articles/:id", async (req, res) => {
 });
 
 // Delete an article
-router.delete("/articles/:id", async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     const del = await articlesModel.deleteById({ _id: req.params.id });
     if (del.deletedCount > 0) {

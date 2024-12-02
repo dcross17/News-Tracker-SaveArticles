@@ -48,12 +48,12 @@ const findArticles = async (filter) => {
 };
 
 /**
- * Retrieve an article based on the ID
- * @param {String} article_id
+ * Retrieve an article based on the URL
+ * @param {String} url
  * @returns Article
  */
-const findArticleById = (article_id) => {
-  return ArticlesModel.findById(article_id).exec();
+const findArticleByUrl = async (url) => {
+  return ArticlesModel.find({ url: url }).exec();
 };
 
 /**
@@ -80,7 +80,7 @@ async function deleteById(filter) {
 export {
   createArticle,
   findArticles,
-  findArticleById,
+  findArticleByUrl,
   updateArticles,
   deleteById,
 };
