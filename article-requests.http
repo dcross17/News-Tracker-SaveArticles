@@ -21,4 +21,5 @@ content-type: application/json
     "content": "Feature Sitting in the hangar of Lockheed Martin's famous Palmdale, California Skunk Works facility is one of the oddest aircraft ever to take shape: the X-59 that's looking to revive supersonic trav… [+5607 chars]"
 }
 
-
+### Request: Retrieve articles in user favorites
+GET http://localhost:3001/articles?favorites=http://www.cnn.com/2024/11/03/politics/trump-dark-closing-message/index.html,https://www.cnn.com/2024/11/03/europe/spanish-king-valencia-angry-crowds-intl/index.html,https://www.nbcphiladelphia.com/decision-2024/harris-church-trump-reporters-shot/4017209/,https://www.thestreet.com/deals/matast-smartwatch-amazon-black-friday-sale-2024,https://www.gamespot.com/articles/get-awesome-meta-quest-3s-or-quest-3-deal-at-amazon-ahead-of-cyber-monday/1100-6528029/,https://www.ign.com/articles/least-expensive-ps5-games-black-friday-2024,https://www.polygon.com/black-friday/486183/asus-glossy-oled-27-inch-gaming-monitor-deal,https://videocardz.com/newz/intel-arc-b570-specs-leaked-18-xe2-cores-10gb-memory-and-pcie-4-0x8 HTTP/1.1

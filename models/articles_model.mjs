@@ -49,11 +49,16 @@ const findArticles = async (filter) => {
 
 /**
  * Retrieve an article based on the URL
- * @param {String} url
+ * @param {Array} favorites
  * @returns Article
  */
 const findArticleByUrl = async (url) => {
   return ArticlesModel.find({ url: url }).exec();
+};
+
+const findArticleByUserFavorites = async (favorites) => {
+  console.log("Article favorites", favorites);
+  return ArticlesModel.find({ url: { $in: favorites } }).exec();
 };
 
 /**
@@ -81,6 +86,7 @@ export {
   createArticle,
   findArticles,
   findArticleByUrl,
+  findArticleByUserFavorites,
   updateArticles,
   deleteById,
 };

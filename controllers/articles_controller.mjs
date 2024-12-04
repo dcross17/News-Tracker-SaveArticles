@@ -1,7 +1,6 @@
 import "dotenv/config";
 import * as articlesModel from "../models/articles_model.mjs";
 import express from "express";
-import jwt from "jsonwebtoken";
 
 const router = express.Router();
 
@@ -42,7 +41,15 @@ router.post("/", async (req, res) => {
 // Retrieve all articles
 router.get("/", async (req, res) => {
   try {
-    const articles = await articlesModel.findArticles(req.query);
+    let articles;
+    if (req.query.favorites) {
+      console.log("Favorites", req.query.favorites);
+      let articlesArray = req.query.favorites.split(",");
+      console.log("Articles", articlesArray);
+      articles = await articlesModel.findArticleByUserFavorites(articlesArray);
+    } else {
+      articles = await articlesModel.findArticles(req.query);
+    }
     res.status(200).json(articles);
   } catch (error) {
     res.status(400).json({ error: error.message });
